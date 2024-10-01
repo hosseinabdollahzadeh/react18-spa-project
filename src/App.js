@@ -1,6 +1,15 @@
+import Header from "./components/Header";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import Home from "./pages/Home";
+
 function App() {
   return (
-    <h1>Hossein Abdollahzadeh</h1>
+    <BrowserRouter>
+        <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
