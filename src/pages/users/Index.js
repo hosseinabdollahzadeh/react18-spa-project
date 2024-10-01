@@ -25,7 +25,6 @@ const IndexUser = () => {
                 {loading && <div className="spinner-border"></div>}
                 {users && <UsersList users={users}/>}
             </div>
-
         </div>
     )
 }

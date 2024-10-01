@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 const UsersList = ({users}) => {
     return (
         <>
@@ -5,7 +7,7 @@ const UsersList = ({users}) => {
                 <div className="col-md-4">
                     <div key={user.id} className="card">
                         <div className="card-header fw-bold">
-                            <span>{user.name}</span>
+                            <Link to={`/users/${user.id}`}>{user.name}</Link>
                         </div>
                         <ul className="list-group list-group-flush">
                             <li className="list-group-item">Username: {user.username}</li>
