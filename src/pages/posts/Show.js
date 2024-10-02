@@ -1,41 +1,41 @@
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 
-const ShowUser = () => {
-    const {userId} = useParams();
-    const [user, setUser] = useState(null)
+const ShowPost = () => {
+    const { postId } = useParams();
+    const [post, setPost] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
     useEffect(() => {
-        fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+        fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
             .then(res => res.json())
             .then(data => {
-                setUser(data)
+                setPost(data)
                 setLoading(false)
                 setError(null)
             }).catch(err => {
             setError(err.message)
             setLoading(false)
         })
-    }, [userId]);
+    }, [postId]);
     return (
-        <>
-            {error && <div>{error}</div>}
-            {loading && <div className="spinner-border"></div>}
-            {user && <div className="col-md-8">
-                <div key={user.id} className="card">
-                    <div className="card-header fw-bold">
-                        <span>{user.name}</span>
+        <div className="container mt-5">
+            <div className="row g-3">
+                {error && <div>{error}</div>}
+                {loading && <div className="spinner-border"></div>}
+                {post && <div className="col-md-8">
+                    <div key={post.id} className="card">
+                        <div className="card-header fw-bold">
+                            <span>{post.title}</span>
+                        </div>
+                        <ul className="card-body">
+                            {post.body}
+                        </ul>
                     </div>
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item">Username: {user.username}</li>
-                        <li className="list-group-item">Email: {user.email}</li>
-                        <li className="list-group-item">Phone: {user.phone}</li>
-                    </ul>
-                </div>
-            </div>}
-        </>
+                </div>}
+            </div>
+        </div>
     )
 }
 
-export default ShowUser
+export default ShowPost
