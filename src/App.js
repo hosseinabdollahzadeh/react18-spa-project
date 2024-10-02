@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import RouterUser from "./pages/users/RouterUser";
 import ShowUser from "./pages/users/Show";
 import RouterPost from "./pages/posts/RouterPost";
+import ShowPost from "./pages/posts/Show";
 
 function App() {
     return (
@@ -11,9 +12,8 @@ function App() {
             <Header/>
             <Routes>
                 <Route path="/" element={<Home/>}/>
-                <Route path="/users/:userId" element={<ShowUser/>}/>
-                <Route path="/users" element={<RouterUser/>}/>
-                <Route path="/posts" element={<RouterPost/>}/>
+                <Route path="/users/*" element={<RouterUser/>}/>
+                <Route path="/posts/*" element={<RouterPost/>}/>
             </Routes>
         </BrowserRouter>
     );
