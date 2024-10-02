@@ -1,7 +1,8 @@
-import {Link, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
+import EditFormPost from "../../components/posts/EditForm";
 
-const ShowPost = () => {
+const EditPost = () => {
     const {postId} = useParams();
     const [post, setPost] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -19,24 +20,13 @@ const ShowPost = () => {
         })
     }, [postId]);
     return (
-        <>
+        <div className="col-md-6">
+            <h2>Edit Post:</h2>
             {error && <div>{error}</div>}
             {loading && <div className="spinner-border"></div>}
-            {post && <div className="col-md-8">
-                <div key={post.id} className="card">
-                    <div className="card-header fw-bold">
-                        <span>{post.title}</span>
-                    </div>
-                    <ul className="card-body">
-                        {post.body}
-                    </ul>
-                    <div className="card-footer">
-                        <Link className="btn btn-sm btn-dark" to={`/posts/edit/${post.id}`}>Edit</Link>
-                    </div>
-                </div>
-            </div>}
-        </>
+            {post && <EditFormPost post={post}/>}
+        </div>
     )
 }
 
-export default ShowPost
+export default EditPost

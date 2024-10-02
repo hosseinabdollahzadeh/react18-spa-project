@@ -2,6 +2,7 @@ import {Route, Routes} from "react-router-dom";
 import IndexPost from "./Index";
 import ShowPost from "./Show";
 import CreatePost from "./Create";
+import EditPost from "./Edit";
 
 const RouterPost = () => {
     return (
@@ -10,6 +11,7 @@ const RouterPost = () => {
                 <Routes>
                     <Route path="/" element={<IndexPost/>}/>
                     <Route path="/create" element={<CreatePost/>}/>
+                    <Route path="/edit/:postId" element={<EditPost/>}/>
                     <Route path="/:postId" element={<ShowPost/>}/>
                 </Routes>
             </div>
