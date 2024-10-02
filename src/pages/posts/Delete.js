@@ -33,7 +33,7 @@ const DeletePost = ({postId}) => {
     return (
         <>
             <button onClick={handleDelete} className="btn btn-sm btn-danger me-4">
-                {loading && <div className="spinner-border"></div>}
+                {loading && <div className="spinner-border spinner-border-sm me-2"></div>}
                 Delete
             </button>
             {error && <div className="mt-2 fw-bold text-danger">{error}</div>}
